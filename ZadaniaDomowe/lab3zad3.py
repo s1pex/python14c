@@ -66,7 +66,7 @@ if(gameType == 2):
     for i in range(len(gameResult)):
         print(gameResult[i])
 else:
-    for i in range(0, gameNum):
+    for i in range(gameNum):
         if len(nickList) == 0:
             player1Nick = input("Player1 enter your nickname: ")
             nickList.append(player1Nick)
@@ -91,25 +91,25 @@ else:
             else:
                 symbol2 = "Scissors"
 
-            if (choise1 == 1 and r == 1):
-                result = "Draw"
-            elif (choise1 == 2 and r == 2):
-                result = "Draw"
-            elif (choise1 == 3 and r == 3):
-                result = "Draw"
-            elif (choise1 == 1 and r == 2):
-                result = f"Bot has won"
-            elif (choise1 == 1 and r == 3):
-                result = f"{player1Nick} has won"
+            if (choise1 == 1 and r == 0):
+                result1 = "Draw"
             elif (choise1 == 2 and r == 1):
-                result = f"{player1Nick} has won"
-            elif (choise1 == 2 and r == 3):
-                result = f"Bot has won"
-            elif (choise1 == 3 and r == 1):
-                result = f"Bot has won"
+                result1 = "Draw"
             elif (choise1 == 3 and r == 2):
-                result = f"{player1Nick} has won"
-            print(result)
-            gameResult.append([f"Player {player1Nick} picked {symbol1}, Bot picked {symbol2},result was: {result}"])
+                result1 = "Draw"
+            elif (choise1 == 1 and r == 1):
+                result1 = f"Bot has won"
+            elif (choise1 == 1 and r == 2):
+                result1 = f"{player1Nick} has won"
+            elif (choise1 == 2 and r == 0):
+                result1 = f"{player1Nick} has won"
+            elif (choise1 == 2 and r == 2):
+                result1 = f"Bot has won"
+            elif (choise1 == 3 and r == 0):
+                result1 = f"Bot has won"
+            elif (choise1 == 3 and r == 1):
+                result1 = f"{player1Nick} has won"
+            print(result1)
+            gameResult.append([f"Player {player1Nick} picked {symbol1}, Bot picked {symbol2},result was: {result1}"])
     for i in range(len(gameResult)):
         print(gameResult[i])
