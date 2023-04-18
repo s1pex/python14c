@@ -63,7 +63,7 @@ print(w_3)
 #boolean,float,int,string,tuple,list,set. Odpowiedź umieśc w stringu w_4
 #1 pkt
 
-w_4 = "tuple, set, list"
+w_4 = "set, list"
 print(w_4)
 
 #5. Dla stringa wypisz
@@ -75,24 +75,27 @@ print(w_4)
 s_5 = "ala ma kota imie ma macko"
 listS5 = list(s_5)
 slownik = {}
+
 for letter in s_5:
-    count = 0
-    if letter in slownik:
-        count = count + 1
+    if letter not in slownik:
+        slownik[letter] = 1
     else:
-        count = count + 1
-        slownik[letter] = count
+        slownik[letter] += 1
 
-
-w_5 = slownik
+w_5 = sorted(slownik.items())
 print(w_5)
 
 #6. Napisz kod który sprawdzi, czy w poprzednim stringu s_5,
 #jakikolwiek znak wystąpił dokładnie 3 razy. Wyświetl Tak jeżeli wystąpił,
 #Nie jeżeli nie wystąpił.
 #1 pkt
+def countLetters():
+    if 3 in slownik.values():
+        return "Tak"
+    else:
+        return "Nie"
 
-w_6="PODAJ WYNIK"
+w_6 = countLetters()
 print(w_6)
 
 #7. Napisz funkcję sprawdzającą czy podane słowa/zdania są palindromem
@@ -101,7 +104,14 @@ print(w_6)
 #3pkt
 
 def palindrom(s):
-    pass
+    s = ''.join(filter(str.isalpha, s))
+    s = ','.join(filter(str.isalpha, s))
+    s = s.lower()
+
+    if s == s[::-1]:
+        return True
+    else:
+        return False
 
 s_7_1 ="Nowy Targ, góry, Zakopane – na pokazy róg, graty won"
 print(palindrom(s_7_1))
@@ -118,7 +128,24 @@ print(palindrom(s_7_1))
 #2 pkt
 
 def fizzbuzz(n):
-    pass
+    numberList = []
+    for num in range(0, n+1):
+        if num % 3 == 0 and num % 5 == 0 and num != 0:
+            num = "FizzBuzz"
+            numberList.append(num)
+            continue
+        elif num % 5 == 0 and num != 0:
+            num = "Buzz"
+            numberList.append(num)
+            continue
+        elif num % 3 == 0 and num != 0:
+            num = "Fizz"
+            numberList.append(num)
+            continue
+        else:
+            numberList.append(num)
+            continue
+    return numberList
 
 n_8 = 16
 print(fizzbuzz(n_8))
@@ -129,8 +156,19 @@ print(fizzbuzz(n_8))
 #3 pkt
 
 n_9 = 6
+
 def fibonacci(n):
-    pass
+    element0 = 0
+    element1 = 1
+    elementyDodawania = []
+    elementyDodawania.append(element0)
+    elementyDodawania.append(element1)
+    sum = 0;
+    for i in range(n):
+        sum = elementyDodawania[0] + elementyDodawania[1]
+        elementyDodawania.remove(elementyDodawania[0])
+        elementyDodawania.append(sum)
+    return f"Suma {n} elementu = {sum}"
 print(fibonacci(n_9))
 
 #10. Napisz funkcję, która dla podanej posortowanej listy
